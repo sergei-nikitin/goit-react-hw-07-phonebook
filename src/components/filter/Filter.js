@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./Filter.module.css";
 import { connect } from "react-redux";
 import { changeFilter } from "../../redux/pb-actions";
+import { getFilter } from "../../redux/contacts-selectors";
 
 const Filter = ({ value, onChangeFilter }) => {
   return (
@@ -24,7 +25,7 @@ Filter.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  value: state.phoneBook.filter,
+  value: getFilter(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -5,6 +5,7 @@ import styles from "./ContactList.module.css";
 import animation from "./AnimationContacts.module.css";
 import { connect } from "react-redux";
 import { deleteContact } from "../../redux/pb-operations";
+import { getContacts, getFilter } from "../../redux/contacts-selectors";
 
 const ContactList = ({ contacts, filter, onDeleteContact }) => {
   let list = contacts.filter((contact) =>
@@ -49,8 +50,8 @@ ContactList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  contacts: state.phoneBook.contacts,
-  filter: state.phoneBook.filter,
+  contacts: getContacts(state),
+  filter: getFilter(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

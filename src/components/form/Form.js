@@ -7,13 +7,13 @@ import Alert from "../alert";
 
 import { CSSTransition } from "react-transition-group";
 import animation from "../contacts/AnimationContacts.module.css";
+import { getContacts } from "../../redux/contacts-selectors";
 
 class Form extends Component {
   state = {
     name: "",
     number: "",
     alert: false,
-    alertField: false,
   };
 
   inputNameId = shortid.generate();
@@ -103,7 +103,7 @@ class Form extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  contacts: state.phoneBook.contacts,
+  contacts: getContacts(state),
 });
 
 const mapDispatchToprops = (dispatch) => ({
